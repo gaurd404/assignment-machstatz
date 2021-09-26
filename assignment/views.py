@@ -4,6 +4,8 @@ import datetime
 from .serializers import InputSerializer, InputSerializer2, InputSerializer3
 import pytz
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 utc = pytz.UTC
 
@@ -36,6 +38,8 @@ def calculate_runtime(runtime):
     return output_runtime
 
 
+@csrf_exempt
+@api_view(['GET'])
 def question_1(request):
     response = requests.get('https://gitlab.com/-/snippets/2094509/raw/master/sample_json_1.json')
     data = response.json()
@@ -164,6 +168,8 @@ def question_1(request):
     return HttpResponse(json.dumps(response_data), content_type='application/json')
 
 
+@csrf_exempt
+@api_view(['GET'])
 def question_2(request):
     response = requests.get('https://gitlab.com/-/snippets/2094509/raw/master/sample_json_2.json')
     data = response.json()
@@ -196,6 +202,8 @@ def question_2(request):
     return HttpResponse(json.dumps(response), content_type="application/json")
 
 
+@csrf_exempt
+@api_view(['GET'])
 def question_3(request):
     response = requests.get('https://gitlab.com/-/snippets/2094509/raw/master/sample_json_3.json')
     data = response.json()
