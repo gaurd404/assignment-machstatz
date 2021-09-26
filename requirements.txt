@@ -5,5 +5,6 @@ djangorestframework==3.12.2
 gunicorn==20.0.4
 psycopg2-binary==2.9.1
 pytz==2020.5
+requests==2.26.0
 virtualenv==15.1.0
 whitenoise==5.2.0
